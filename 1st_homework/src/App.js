@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-
+import React, { useState } from 'react'; 
 //component의 렌더링 결과가 상태에 따라 변경될 수 있도록 
 
 function Label(props){ //입력 필드에 대한 라벨 역할 수행 (component)
@@ -34,12 +33,14 @@ function App() { //메인함수
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-        <SetInformation labelText = "Name: " type="text" value={name} onChange={(event) => setName(event.target.value)} />
-        <SetInformation labelText ="Email: " type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-        <SetInformation labelText = "Message: " value={message} onChange={(event) => setMessage(event.target.value)} />
-        <button type="submit">Submit</button>
-    </form>
+    <div className='app-container'>
+      <form className='form-container' onSubmit={handleSubmit}>
+          <SetInformation labelText = "Name: " type="text" value={name} onChange={(event) => setName(event.target.value)} />
+          <SetInformation labelText ="Email: " type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+          <SetInformation labelText = "Message: " value={message} onChange={(event) => setMessage(event.target.value)} />
+          <button type="submit">Submit</button>
+      </form>
+    </div>
   ); //submit을 눌렀을 때 handleSubmit호출
   // onChange 속성에는 handleNameChange 함수가 전달 => 이름이 변경될 때마다 실행
 }
