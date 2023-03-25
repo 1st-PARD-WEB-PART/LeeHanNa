@@ -1,26 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+// pages폴더 내 모든 파일을 한 곳에 모으는 역할 App.js
 // 2주차 router_Training
+import { Route, Routes } from 'react-router-dom';
+import About from './pages/About';
+import Home from './pages/Home';
 
 function App() {
+  //<Route path="주소규칙" element={보여줄 컴포넌트 JSX} />
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
   );
-}
+};
 
 export default App;
