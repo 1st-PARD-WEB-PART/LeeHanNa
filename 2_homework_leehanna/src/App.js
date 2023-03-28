@@ -3,15 +3,25 @@
 import { Route, Routes } from 'react-router-dom';
 import About from './pages/About';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Article from './pages/Article';
+import Articles from './pages/Articles';
+import Layout from './Layout';
 
 function App() {
   //<Route path="주소규칙" element={보여줄 컴포넌트 JSX} />
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+  return ( //index는 path="/"와 동일한 역할 => 처음 화면으로 보이겠다.
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
-    </Routes>
+      <Route path="/profiles/:username" element={<Profile />} />
+    </Route>
+    <Route path="/articles" element={<Articles />}>
+      <Route path=":id" element={<Article />} />
+    </Route>
+  </Routes>
   );
 };
-
+//username은 Profile에 params.username와 변수 연결된 느낌
 export default App;
