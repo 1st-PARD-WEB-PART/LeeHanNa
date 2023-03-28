@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Article from './pages/Article';
 import Articles from './pages/Articles';
 import Layout from './Layout';
+import NotFound from './pages/NotFound';
 
 function App() {
   //<Route path="주소규칙" element={보여줄 컴포넌트 JSX} />
@@ -20,8 +21,12 @@ function App() {
     <Route path="/articles" element={<Articles />}>
       <Route path=":id" element={<Article />} />
     </Route>
+    <Route path="*" element={<NotFound />} />
+    {/* path="*" : 모든 URL 경로와 일치하도록 지정 => 어떤 페이지도 찾을 수 없는 경우에 NotFound 컴포넌트를 렌더링 */}
   </Routes>
   );
 };
+
+
 //username은 Profile에 params.username와 변수 연결된 느낌
 export default App;
