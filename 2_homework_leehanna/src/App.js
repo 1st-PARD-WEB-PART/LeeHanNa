@@ -8,6 +8,8 @@ import Article from './pages/Article';
 import Articles from './pages/Articles';
 import Layout from './Layout';
 import NotFound from './pages/NotFound';
+import MyPage from './pages/Mypage';
+import Login from './pages/Login';
 
 function App() {
   //<Route path="주소규칙" element={보여줄 컴포넌트 JSX} />
@@ -23,6 +25,8 @@ function App() {
     </Route>
     <Route path="*" element={<NotFound />} />
     {/* path="*" : 모든 URL 경로와 일치하도록 지정 => 어떤 페이지도 찾을 수 없는 경우에 NotFound 컴포넌트를 렌더링 */}
+    <Route path="/login" element={<Login />}></Route>
+    <Route path="/mypage" element={<MyPage />}></Route>
   </Routes>
   );
 };
