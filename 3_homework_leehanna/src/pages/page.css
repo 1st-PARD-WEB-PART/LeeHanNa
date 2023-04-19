@@ -7,10 +7,13 @@ table{
 td{
     background: white;
 }
+
 table .active{
     border-bottom: 3px solid #1877F2;
     text-align: center;
+    color: #1877F2;
 }
+
 .b_home {
     background: none;
 }
