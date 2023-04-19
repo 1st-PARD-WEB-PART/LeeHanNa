@@ -1,13 +1,28 @@
-*{
+.home{
     background-color: #F0F2F5;
 }
-/* .home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-} */
-  
+table{
+    background: white;
+}
+td{
+    background: white;
+}
+table .active{
+    border-bottom: 3px solid #1877F2;
+    text-align: center;
+}
+.b_home {
+    background: none;
+}
+
+.b_people {
+    background: none;
+}
+
+.b_play {
+    background: none;
+}
+
 .home h1 {
     font-family: 'Inter';
     font-style: normal;
@@ -45,10 +60,10 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    margin: 10px;
 }
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 .link_button{
@@ -56,13 +71,12 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-  
 .search input{
     background-color: #F0F2F5;
     border: none;
-    width: 100px;
     padding: 10px;
     margin: 5px;
     border-radius: 15px;
+    width: 50px;
+    flex: 0.2 1;
 }
-  

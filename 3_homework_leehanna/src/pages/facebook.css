@@ -1,5 +1,5 @@
-.textbox{
-    background-color: #F0F2F5;
+*{
+    background: #F0F2F5;
 }
 
 h1{
@@ -114,37 +114,22 @@ p{
     position: fixed;
     width: 100%;
     bottom: 0;
-    height: 100px;
     background-color: #FFFFFF;
-    color: #8A8D91;
     font-family: 'Roboto';
     font-size: 14px;
     padding: 50px;
-    text-align: center;
-    /* top: 795px; */
+    padding-right: 100px;
+    color : #65676B;
 
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.footer p{
-    position: absolute;
-    background-color: #FFFFFF;
-    text-align: left;
-    color: #8A8D91;
-    font-family: 'Roboto';
-    font-size: 14px;
-}
 .footer hr {
-    width: 80%;
+    width: 85%;
     height: 0px;
-    border: 1px solid #8A8D91;
+    border: 0.5px solid #65676B;
     margin-top: 20px;
-}
-.f_text1{
-    width: 100%;
-    background-color: #FFFFFF;
-    position: absolute;
-    height: 100px;
-    color: #8A8D91;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 .f_text2{
     width: 100%;
