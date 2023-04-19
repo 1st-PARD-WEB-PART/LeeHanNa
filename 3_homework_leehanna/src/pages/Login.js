@@ -2,7 +2,7 @@ import React from 'react';
 import './facebook.css';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
 const LanguageLink = styled.a`
   background: white;
@@ -14,6 +14,7 @@ const LanguageLink = styled.a`
   line-height: 19px;
   text-decoration-line: none;
   margin-left : 10px;
+  margin-right : 5px;
   padding: 0 10px;
   &:hover {
     text-decoration: underline;
@@ -40,6 +41,7 @@ const Language = styled.div`
   display: flex;
   -webkit-box-pack: justify;
   flex-wrap: wrap;
+  margin-right: 200px;
 `;
 
 function Login({ onLogin }) {
@@ -91,6 +93,7 @@ function Login({ onLogin }) {
         <Language>
         {languages.map((language) => (
           <LanguageLink href='#'>{language}</LanguageLink>))}
+          <BsFillPlusSquareFill size={17}/>
         </Language>
         <hr />
         <Language>
