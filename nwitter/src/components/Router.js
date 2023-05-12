@@ -6,7 +6,7 @@ import Profile from '../routes/Profile';
 import Navigation from './Navigation';
 
 
-const AppRouter = ({isLoggedIn, userObj}) => { //App에서 
+const AppRouter = ({refreshUser, isLoggedIn, userObj}) => { //App에서 
     return(
         <Router>
             {//로그인이 되었을 때 <Navigation />
@@ -17,7 +17,7 @@ const AppRouter = ({isLoggedIn, userObj}) => { //App에서
                     <>
                     <Route path="/" element={<Home userObj={userObj}/>}  //props(userObj)전달
                     />
-                    <Route path="/profile" element={<Profile userObj={userObj}/>} />
+                    <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser}/>} />
                     </>
                 ) : (
                     <Route exact path="/" element={<Auth />}/>
