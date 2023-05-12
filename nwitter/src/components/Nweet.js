@@ -38,6 +38,8 @@ const Nweet = ({nweetObj, isOwner}) => { //nweetObj받아서 id확인
                 </>
                 ) : (<>
                         <h4>{nweetObj.text}</h4>
+                        {nweetObj.attachmentUrl && <img src = {nweetObj.attachmentUrl} width = "100px" height = "100px"/>}
+                        <br></br>
                         {isOwner && ( //넘겨받은 isOwner이 true이면 삭제, 수정 가능
                         <>
                         <button onClick={onDeleteClick}>Delete Nweet</button>
