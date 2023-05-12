@@ -12,7 +12,7 @@ const Nweet = ({nweetObj, isOwner}) => { //nweetObj받아서 id확인
         if(ok) {
             await deleteDoc(NweetTextRef); //delete nweet
             const ulrRef = ref(storageService, nweetObj.attachmentUrl); //url 가져오기
-            await deleteObject(ulrRef); //삭제 (사진 삭제)
+            await deleteObject(ulrRef); //url을 찾아 파일도 삭제
         }
     };
     const toggleEditing = () => setEditing((prev) => !prev); //수정 버튼 누르면 editing변수 t/f

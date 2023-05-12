@@ -15,6 +15,10 @@ function App() {
         if(user) {
           setIsLoggedIn(true);
           setUserObj(user); //로그인 한 user받기
+          if(user.displayName === null){ //social login으로 로그인하지 않았을 경우 name이 null -> name정하기
+            const name = user.email.split("@")[0];
+            user.displayName = name;
+          }
         }
         else {
           setIsLoggedIn(false); 
