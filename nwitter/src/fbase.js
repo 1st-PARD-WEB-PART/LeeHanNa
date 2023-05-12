@@ -1,5 +1,10 @@
+/* 
+collection - 폴더
+document - 문서
+*/
 import *as firebase from "firebase/app";
 import { getAuth } from 'firebase/auth'; // Auth 연결
+import { getFirestore } from "firebase/firestore"; // Database 연결
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -13,4 +18,5 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const authService = getAuth(app);
 const firebaseInstance = firebase;
-export { app, authService , firebaseInstance };
+const dbService = getFirestore(app); // DB 관리 
+export { app, authService , firebaseInstance ,dbService};
