@@ -35,6 +35,7 @@ const Auth = () => {
     };
     //이전 값(newAccount)을 가져와서 그 값의 반대를 return
     const toggleAccount = () => setNewAccount((prev) => !prev); 
+    //구글과 깃허브로 팝업창에서 로그인하기
     const onSocialClick = async (event) =>{
         const {target:{name},
         } = event;
