@@ -6,6 +6,7 @@ import Nweet from '../components/Nweet';
 const Home = ({userObj}) => { //props (userObj)는 router에서 확인
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
+    const [attachment, setAttachment] = useState();
     useEffect(()=>{
         //데이터베이스에서 뭔가를 하게 되면 알 수 있도록 listener
         const q = query(
@@ -23,7 +24,7 @@ const Home = ({userObj}) => { //props (userObj)는 router에서 확인
     const onSubmit = async (event) => { //add
         event.preventDefault();
         try{
-            await addDoc(collection(dbService, "nweets"),{
+            await addDoc(collection(dbService, "nweets"),{ //nweets collection에 저장
                 text : nweet,
                 createdAt : Date.now(),
                 creatorId: userObj.uid,
@@ -38,11 +39,34 @@ const Home = ({userObj}) => { //props (userObj)는 router에서 확인
         } = event;
         setNweet(value);
     };
+    const onFileChange = (event) => { //file선택 상황이 바뀔때마다 호출
+        const {target: { files },
+        } = event;
+        const theFile = files[0]; //file저장
+        const reader = new FileReader(); //저장한 file불러오기
+        reader.onloadend = (event) =>{ //파일 읽기 작업이 끝났을 때 (event listner)
+            const {currentTarget: {result}, //currentTarget에 result에 url이 있음
+            } = event;
+            setAttachment(result); //attachment에 넣기
+        }
+        reader.readAsDataURL(theFile); //url text받음
+    }
+    const onClearAttachment = () => setAttachment(); //setAttachment비우기
     return(
         <div>
             <form onSubmit={onSubmit}>
                 <input value = {nweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120} />
                 <input type="submit" value="Nweet" />
+                <br></br>
+                <input type="file" accept="image/*" onChange={onFileChange}/>
+                <br></br>
+                {attachment && (
+                    //url이 저장된 attachment를 이용해서 이미지 보이기
+                    <div>
+                        <img src = {attachment} width = "100px" height = "100px" />
+                        <button onClick={onClearAttachment}> Clear </button>
+                    </div>
+                )}
             </form>
             <div>
                 {nweets.map((nweet)=>
