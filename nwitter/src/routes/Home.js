@@ -3,7 +3,7 @@ import { dbService } from '../fbase';
 import { addDoc, collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import Nweet from '../components/Nweet';
 
-const Home = ({userObj}) => {
+const Home = ({userObj}) => { //props (userObj)는 router에서 확인
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
     useEffect(()=>{
@@ -13,17 +13,17 @@ const Home = ({userObj}) => {
             orderBy("createdAt", "desc")
         );
         onSnapshot(q, (snapshot)=>{ 
-            const nweetArr = snapshot.docs.map((doc)=>({ //Snapshot실시간으로 확인
+            const nweetArr = snapshot.docs.map((doc)=>({ //Snapshot실시간으로 확인 (데이터베이스에 무슨 일이 있을 때 알림 받기)
                 id: doc.id,
                 ...doc.data(),
             }));
-            setNweets(nweetArr);
+            setNweets(nweetArr); //새로운 snapshot을 받을 때 배열을 만들고 state에 배열 집어넣기
         });
     },[]);
     const onSubmit = async (event) => { //add
         event.preventDefault();
         try{
-            const docRef = await addDoc(collection(dbService, "nweets"),{
+            await addDoc(collection(dbService, "nweets"),{
                 text : nweet,
                 createdAt : Date.now(),
                 creatorId: userObj.uid,
@@ -46,7 +46,10 @@ const Home = ({userObj}) => {
             </form>
             <div>
                 {nweets.map((nweet)=>
-                <Nweet key={nweet.id} nweetObj = {nweet} isOwner={nweet.creatorId === userObj.uid} />
+                <Nweet  //nweet - component , 두개의 props (nweetObj, isOwner)
+                key={nweet.id} 
+                nweetObj = {nweet} //nweetObj - 전체의 object / props처럼 보냄(Nweet로)
+                isOwner={nweet.creatorId === userObj.uid} /> //isOwner이 true (내가 쓴 글) / userObj.uid는 Home의 props로부터
                 )}
             </div>
         </div>
