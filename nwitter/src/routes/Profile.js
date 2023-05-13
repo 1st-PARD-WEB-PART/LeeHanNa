@@ -41,11 +41,25 @@ const Profile = ({refreshUser, userObj}) => { //userObj - 로그인 한 user정�
     };
     return (
         <>
-        <form onSubmit={onSubmit}>
-            <input value={newDisplayName} onChange={onChange} type="text" placeholder="Display name" />
-            <input type="submit" value="Update Profile" />
-        </form>
-        <button onClick={onLogOutClick}>Log out</button>
+        <div
+            style={{
+                maxWidth: 890,
+                width: "100%",
+                margin: "0 auto",
+                marginTop: 80,
+                display: "flex",
+                justifyContent: "center",
+        }}>
+            <div className="container">
+                <form onSubmit={onSubmit} className="profileForm">
+                    <input value={newDisplayName} onChange={onChange} type="text" placeholder="Display name" className="formInput"/>
+                    <input type="submit" value="Update Profile" className="formBtn" style={{marginTop: 10,}}/>
+                </form>
+                <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+                    Log Out
+                </span>
+            </div>
+        </div>
         </>
     );
 

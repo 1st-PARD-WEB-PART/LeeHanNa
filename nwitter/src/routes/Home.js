@@ -25,15 +25,25 @@ const Home = ({userObj}) => { //props (userObj)는 router에서 확인
     
     
     return(
-        <div>
-            <NweetFactory userObj={userObj} />
-            <div>
-                {nweets.map((nweet)=>
-                <Nweet  //nweet - component , 두개의 props (nweetObj, isOwner)
-                key={nweet.id} 
-                nweetObj = {nweet} //nweetObj - 전체의 object / props처럼 보냄(Nweet로)
-                isOwner={nweet.creatorId === userObj.uid} /> //isOwner이 true (내가 쓴 글) / userObj.uid는 Home의 props로부터
-                )}
+        <div
+            style={{
+                maxWidth: 890,
+                width: "100%",
+                margin: "0 auto",
+                marginTop: 80,
+                display: "flex",
+                justifyContent: "center",
+        }}>
+            <div className="container">
+                <NweetFactory userObj={userObj} />
+                <div style={{ marginTop: 30 }}>
+                    {nweets.map((nweet)=>
+                    <Nweet  //nweet - component , 두개의 props (nweetObj, isOwner)
+                    key={nweet.id} 
+                    nweetObj = {nweet} //nweetObj - 전체의 object / props처럼 보냄(Nweet로)
+                    isOwner={nweet.creatorId === userObj.uid} /> //isOwner이 true (내가 쓴 글) / userObj.uid는 Home의 props로부터
+                    )}
+                </div>
             </div>
         </div>
     );

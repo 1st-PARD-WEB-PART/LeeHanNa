@@ -2,6 +2,8 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { dbService, storageService } from "../fbase";
 import React, {useState} from "react";
 import { deleteObject, ref } from "firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Nweet = ({nweetObj, isOwner}) => { //nweetObj받아서 id확인
     const [editing, setEditing] = useState(false); //수정 모드인지 아닌지 T/F
@@ -32,14 +34,14 @@ const Nweet = ({nweetObj, isOwner}) => { //nweetObj받아서 id확인
     }
 
     return(
-        <div>
+        <div className="nweet">
             {editing ? ( //수정 -> 이전 메시지 빈칸에 등록 + 취소 버튼 / Cancle -> toggleEditing 호출에 의해 editing변수 = f
                 <>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} className="container nweetEdit">
                     <input type = "text" placeholder="Edit your nweet" value={newNweet} required onChange={onChange}/>
-                    <input type = "submit" value="Update Nweet" />
+                    <input className="formBtn" type = "submit" value="Update Nweet" />
                 </form> 
-                <button onClick={toggleEditing}>Cancle</button>
+                <button onClick={toggleEditing} className="formBtn cancelBtn">Cancle</button>
                 </>
                 ) : (<>
                         <h4>{nweetObj.text}</h4>
@@ -47,8 +49,14 @@ const Nweet = ({nweetObj, isOwner}) => { //nweetObj받아서 id확인
                         <br></br>
                         {isOwner && ( //넘겨받은 isOwner이 true이면 삭제, 수정 가능
                         <>
-                        <button onClick={onDeleteClick}>Delete Nweet</button>
-                        <button onClick={toggleEditing}>Edit Nweet</button>
+                        <div className="nweet__actions">
+                            <span onClick={onDeleteClick}>
+                                <FontAwesomeIcon icon={faTrash} />
+                            </span>
+                            <span onClick={toggleEditing}>
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            </span>
+                        </div>
                         </>
                         )}
                     </>
